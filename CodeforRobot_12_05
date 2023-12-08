@@ -18,6 +18,7 @@ Motor fr_drive(10, E_MOTOR_GEARSET_06,0, E_MOTOR_ENCODER_COUNTS);
 Motor mr_drive(9, E_MOTOR_GEARSET_06,0, E_MOTOR_ENCODER_COUNTS);
 Motor br_drive(20, E_MOTOR_GEARSET_06,0, E_MOTOR_ENCODER_COUNTS);
 Motor flywheel(3, E_MOTOR_GEARSET_06,1, E_MOTOR_ENCODER_COUNTS);
+Motor intake(12, E_MOTOR_GEARSET_06,1, E_MOTOR_ENCODER_COUNTS);
 
 // Inertial sensor
 Imu imu_sensor(1);
@@ -44,6 +45,11 @@ void opcontrol() {
     while (true) {
         // Back buttons controls template
         // R1 R2 L1 L2
+		if (master.get_digital(DIGITAL_L2)){
+			intake.move(127);
+		}else if (master.get_digital(DIGITAL_L2)){
+			intake.move(0);
+		}
         if (master.get_digital(DIGITAL_R1)){
             flywheel.move(127);
         }else if (master.get_digital(DIGITAL_R2)){
