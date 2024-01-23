@@ -49,6 +49,8 @@ void opcontrol() {
 			intake.move(127);
 		}else if (master.get_digital(DIGITAL_L2)){
 			intake.move(0);
+		}else if (master.get_digital(DIGITAL_A)){
+			intake.move(-127);
 		}
         if (master.get_digital(DIGITAL_R1)){
             flywheel.move(127);
@@ -56,8 +58,7 @@ void opcontrol() {
             flywheel.move(-127);
         }else if (master.get_digital(DIGITAL_L1)){
             flywheel.move(0);
-
-    
+		
         }
     
 
